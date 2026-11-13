@@ -5,6 +5,20 @@
 > 基于 [oaooi/xiaomi_be6500pro](https://github.com/oaooi/xiaomi_be6500pro) 整理：
 > 修正了软件源脚本的死链问题，全部脚本注释已中文化，并保留原有功能。
 
+## 关于下载源
+
+所有安装命令默认走 **jsDelivr CDN**（国内直连、路由器可访问）。GitHub raw 直连仅在可翻墙环境使用。
+
+| 文件 | jsDelivr（推荐） | GitHub raw（需代理） |
+|---|---|---|
+| auto_ssh.sh | `https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/auto_ssh.sh` | `https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/auto_ssh.sh` |
+| auto_overlay.sh | `https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/auto_overlay.sh` | `https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/auto_overlay.sh` |
+| change_opkg_sources.sh | `https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/change_opkg_sources.sh` | `https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/change_opkg_sources.sh` |
+| ctemp.sh | `https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/ctemp.sh` | `https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/ctemp.sh` |
+| ctemp_overlaybase.sh | `https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/ctemp_overlaybase.sh` | `https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/ctemp_overlaybase.sh` |
+
+> jsDelivr 说明：`@main` 跟随主分支最新提交（约 12 小时缓存延迟）；GitHub raw 永远是最新。刚推的新提交若 CDN 没刷新，把 `@main` 换成具体 commit 前缀（如 `@28bcce7`）可立即获取。
+
 ## 1. 自动启动 SSH
 
 SSH 终端运行：
@@ -12,7 +26,7 @@ SSH 终端运行：
 ```
 mkdir -p /data/scripts
 cd /data/scripts
-curl -k -O https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/auto_ssh.sh
+curl -k -O https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/auto_ssh.sh
 chmod +x auto_ssh.sh
 sh auto_ssh.sh install
 ```
@@ -32,7 +46,7 @@ SSH 终端运行：
 ```
 mkdir -p /data/scripts
 cd /data/scripts
-curl -k -O https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/auto_overlay.sh
+curl -k -O https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/auto_overlay.sh
 chmod +x auto_overlay.sh
 sh auto_overlay.sh install
 reboot
@@ -53,7 +67,7 @@ SSH 终端运行：
 ```
 mkdir -p /data/scripts
 cd /data/scripts
-curl -k -O https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/change_opkg_sources.sh
+curl -k -O https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/change_opkg_sources.sh
 chmod +x change_opkg_sources.sh
 sh change_opkg_sources.sh install
 ```
@@ -84,7 +98,7 @@ sh /data/scripts/change_opkg_sources.sh uninstall
 ### 4.1 已挂载 Overlay
 
 ```
-curl -k https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/ctemp_overlaybase.sh | sh
+curl -k https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/ctemp_overlaybase.sh | sh
 ```
 
 （卸载）
@@ -100,7 +114,7 @@ rm /usr/bin/ctemp
 ```
 mkdir -p /data/scripts
 cd /data/scripts
-curl -k -O https://raw.githubusercontent.com/fan2656226514fan/xiaomi_be6500pro/main/ctemp.sh
+curl -k -O https://cdn.jsdelivr.net/gh/fan2656226514fan/xiaomi_be6500pro@main/ctemp.sh
 chmod +x ctemp.sh
 sh ctemp.sh install
 ```
