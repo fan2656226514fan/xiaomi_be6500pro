@@ -5,6 +5,17 @@
 #   2. Idempotent: no duplicate arch lines in /etc/opkg.conf on repeated runs
 #   3. No mv/.bak juggling -> direct overwrite of /etc/opkg/distfeeds.conf
 #   4. Waits for auto_overlay.sh to finish expanding / before writing /etc (boot order safety)
+#
+# 用法 Usage:
+#   安装(写源+注册开机钩子):  sh /data/scripts/change_opkg_sources.sh install
+#   仅重写一次源配置:         sh /data/scripts/change_opkg_sources.sh
+#   卸载(删开机钩子):         sh /data/scripts/change_opkg_sources.sh uninstall
+#
+# 卸载说明 Uninstall notes:
+#   uninstall 只删除 firewall 开机钩子，不动 /etc/opkg/distfeeds.conf 和 /etc/opkg.conf，
+#   已生效的源配置保持不变；如需恢复原厂源，手动执行:
+#     cp /etc/opkg/distfeeds.conf.bak /etc/opkg/distfeeds.conf   # 若存在原厂备份
+#   或直接删除本脚本: rm /data/scripts/change_opkg_sources.sh
 
 script_dir="/data/scripts"
 
